@@ -25,24 +25,14 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.deepOrange, color: Colors.deepPurple),
           )),
           body: Center(
-            child: MaterialButton(
-                onPressed: () {},
-                splashColor: Colors.green,
-                color: Colors.red,
-                child: Text(
-                  "data a loading",
-                  
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-
-                  )
-                  ,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)
-                )
-                ),
+            child:IconButton(onPressed: (){},
+            icon: Icon(
+              Icons.add_a_photo
+            ),
+            iconSize: 50.0,
+            splashColor: Colors.green,
+            tooltip: "Add a Photo"
+            ,)
           ),
         ));
   }
