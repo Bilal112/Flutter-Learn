@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 // void main() => runApp(MyApp());
 
 // class MyApp extends StatelessWidget {
@@ -18,60 +18,55 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme:  ThemeData(
-        primaryColor: Colors.cyan
-      ),
+      theme: ThemeData(primaryColor: Colors.cyan),
       title: "My App",
       home: Myhome(),
-      
     );
   }
 }
+
 class Myhome extends StatefulWidget {
-
-
-
   @override
   _MyhomeState createState() => _MyhomeState();
 }
 
 class _MyhomeState extends State<Myhome> {
-   int count = 0;
+  List<Color> randomcolor =[
+    Color(0xffff5722),
+    Color(0xffb74093),
+    Color(0xffC71585),
+    Color(0xff8BFD8D),
+    Color(0xff00008B),
+    Color(0xff5e35b1),
+    Color(0xffd50000),
+    Color(0xff3f51b5),
 
 
-void updateCount (){
-  setState(() {
-    count += 1;
-  });
+  ];
+  int index ;
+  Color colorrightnow= Color(0xff00008B);
+  void changecolor(){
+     setState(() {
+index = Random().nextInt(randomcolor.length);
+colorrightnow= randomcolor[index];       
+     });
+  }
 
-
-}
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Bilal")
+    return Container(
+      decoration: BoxDecoration(
+        color:  colorrightnow
       ),
-      body: Center(
+    
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
 
-        child : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text("$count",
-            style: TextStyle(fontSize: 30.0,color: Colors.cyan),
-            ),
-            RaisedButton(onPressed: updateCount,
-            color: Colors.cyan,
-          
-            splashColor: Colors.cyan,
-
-            child: Text("On Click",style:TextStyle(fontSize: 20.5,color: Colors.white,
-       )))
-          ],
-        )
-      ),
-
+          FlatButton(onPressed: changecolor, child: Text("Change Color",style: TextStyle(color: Colors.white,fontSize: 25.5,fontStyle:FontStyle.italic),))
+        ],
+      )
     );
   }
 }
